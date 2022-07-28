@@ -1,0 +1,118 @@
+<!--
+SPDX-FileCopyrightText: 2022 Digital Dasein <https://digital-dasein.gitlab.io/>
+SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
+SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+    dd-slide {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/dd-slide.js';
+
+    render(
+      html`
+      <h1>dd-slide demo</h1>
+      <h2>This example does not include any presentation framework, nor top-level elements</h2>
+
+      <h3>Example 1.1 - wrong grid</h3>
+      <dd-slide dim=""></dd-slide>
+      <br><br>
+
+      <h3>Example 1.2 - minimal with 2x2 grid</h3>
+      <dd-slide dim="50 50; 50 50;"></dd-slide>
+      <br><br>
+
+      <h3>Example 1.3 - minimal, no auto-fillers</h3>
+      <dd-slide no-fillers dim="50 50; 50 50;"></dd-slide>
+      <br><br>
+
+      <h3>Example 2 - no grid</h3>
+      <dd-slide>
+        <h2>my title</h2>
+        <div>my content, without a grid</div>
+        <h3>Some more sub-headers</h4>
+        <div>And some more content</div>
+        <h4>Some more sub-headers</h4>
+        <div>And some more content</div>
+      </dd-slide>
+      <br><br>
+
+      <h3>Example 3 - 2 x 2 grid (with borders)</h3>
+      <dd-slide dim="50 50; 50 50;" slot-style="border: 1px solid black;">
+        <h2>Feel entitled to change me.</h2>
+        <div slot="1">
+          This is my own content.
+          <h4>Nest whatever you want here.</h4>
+        </div>
+        <div slot="2">
+            And now for the second slot
+        </div>
+        <div slot="3">
+          SLOT 3
+        </div>
+        <div slot="4">
+          SLOT 4
+        </div>
+      </dd-slide>
+      <br><br>
+
+      <h3>Example 4 - 2 x 2 grid, partially unfilled </h3>
+      <dd-slide dim="50 50; 50 50;">
+        <h2>Feel entitled to change me.</h2>
+        <div slot="1">
+          This is my own content.
+          <h4>Nest whatever you want here.</h4>
+        </div>
+        <div slot="2">
+            And now for the second slot
+        </div>
+      </dd-slide>
+      <br><br>
+
+      <h3>Example 5 - 1 x 3 grid (with borders), and additional content</h3>
+      <dd-slide dim="33 33 33" slot-style="border: 1px solid black;">
+        <h2>Feel entitled to change me.</h2>
+        <div slot="1">
+          This is my own content.
+          <h4>Nest whatever you want here.</h4>
+        </div>
+        <div slot="2">
+          And now for the second slot
+        </div>
+        <div slot="3">
+          SLOT 3
+        </div>
+
+        <h4>Some content that goes <i>before</i> the grid</h4>
+        Coolio
+
+        <div slot=postgrid>
+          Some content that goes <i>after</i> the grid.
+          <p>note that depending on your grid complexitity, a (set of) <b><code>dd-slide</code></b> element(s) could be much better suited</p>
+        </div>
+      </dd-slide>
+      <br><br>
+      `,
+
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
