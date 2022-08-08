@@ -20,13 +20,38 @@ const DEFAULT_ATTRIBUTES = {
  * Main class for dd-slide element
  */
 export class DdSlide extends LitElement {
+  /*
+   * Availabe CSS variables for styling dd-slide
+   *
+   *  --slide-prim-color: var(--dd-prim-color, rgba(153, 155, 132, 1));
+   *  --slide-prim-color-dark: var(--dd-prim-color-dark, rgba(65, 90, 72, 1));
+   *  --slide-sec-color: var(--dd-sec-color, rgba(248, 237, 227, 1));
+   *  --slide-sec-color-dark: var(--dd-sec-color-dark, rgba(238, 254, 216, 1));
+   *  --slide-text-color: var(--dd-text-color, rgba(0, 0, 0, 0.9));
+   *  --slide-text-color-light: var(
+   *    --dd-text-color-light,
+   *    rgba(255, 255, 255, 1)
+   *  );
+   *
+   *  --slide-ratio: var(--dd-slide-ratio, calc(16 / 9));
+   *  --slide-width: var(--dd-slide-width, 1024px);
+   *  --slide-height: calc(var(--slide-width) / var(--slide-ratio));
+   *  --slide-font: var(--dd-font, 24px/2 'Roboto', sans-serif);
+   *  --slide-pad-top: 0px;
+   *  --slide-pad-top-content: 0px;
+   *  --slide-pad-right: calc(25px + var(--slide-gridspace-col));
+   *  --slide-pad-left: 25px;
+   *  --slide-gridspace-row: var(--dd-slide-gridspace-row, 10px);
+   *  --slide-gridspace-col: var(--dd-slide-gridspace-col, 10px);
+   */
+
   static styles = css`
     /****************************************************************
      * Element styling
      ****************************************************************/
 
     :host {
-      /** dd color pallette */
+      /* dd color pallette */
       --slide-prim-color: var(--dd-prim-color, rgba(153, 155, 132, 1));
       --slide-prim-color-dark: var(--dd-prim-color-dark, rgba(65, 90, 72, 1));
       --slide-sec-color: var(--dd-sec-color, rgba(248, 237, 227, 1));
