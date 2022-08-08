@@ -33,12 +33,3 @@ h3.tsd-anchor-link {
 .tsd-accordion-details section:nth-child(2) {
     display:block !important;
 }
-
-/*.tsd-panel-group.tsd-member-group {*/
-    /*display:none !important;*/
-/*}*/
-
-/*.tsd-panel-group.tsd-member-group:nth-child(1),*/
-/*.tsd-panel-group.tsd-member-group:nth-child(2) {*/
-    /*display:block !important;*/
-/*}*/

@@ -19,7 +19,7 @@ const DEFAULT_ATTRIBUTES = {
 /**
  * Main class for `dd-slide` component
  *
- * For <b>styling</b> this component, check out {@link DdSlide.styles | the styles
+ * For **styling** this component, check out {@link DdSlide.styles | the styles
  * section}.
  *
  * <u>**Important note**</u>: all lit-component properties (interpreted as `other
