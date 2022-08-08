@@ -46,7 +46,7 @@ library.
 ## Docs
 
 &rarr; [go to 
-docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/docs)
+docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/docs/classes/DdSlide.html)
 
 ## Local Demo with `web-dev-server`
 

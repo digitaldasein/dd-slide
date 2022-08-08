@@ -17,15 +17,15 @@ const DEFAULT_ATTRIBUTES = {
 };
 
 /**
- * Main class for `dd-slide` component
+ * Main class for **`dd-slide` component**
  *
  * For **styling** this component, check out {@link DdSlide.styles | the styles
  * section}.
  *
- * <u>**Important note**</u>: all lit-component properties (interpreted as `other
- * properties`)  that are documented here also have a **corresponding HTML
- * attribute**. The _non-attribute_ properties can be consired private, and are
- * ingore in the documentation.
+ * <u>**Important note**</u>: all lit-component properties (interpreted here as
+ * `other properties`)  that are documented here also have a **corresponding
+ * HTML attribute**. The _non-attribute_ properties can be consired private,
+ * and are ingored in the documentation.
  *
  * @example
  * A simple example, with 2x2 grid (4 slots), each taking up 50% of the width,
@@ -46,9 +46,9 @@ const DEFAULT_ATTRIBUTES = {
  */
 export class DdSlide extends LitElement {
   /**
-   * It is advised to style the `dd-slide` component with the following **CSS host
-   * variables**, including their
-   * default values:
+   * To style the `dd-slide` component, use the following **CSS host
+   * variables** (including their default values), in combination with {@link
+   * DdSlide.slotStyle} and {@link DdSlide.rowStyle}:
    *
    * - **`--dd-heading-color`** [`var(--dd-prim-color-dark)`]: slide heading
    *                            color, falls back to `black` if not defined
