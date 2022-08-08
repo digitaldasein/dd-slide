@@ -9,13 +9,16 @@ import { property } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 const DEFAULT_ATTRIBUTES = {
-  dim: null,
+  dim: '',
   slotStyle: '',
   rowStyle: '',
   noFillers: false,
   noFooter: false,
 };
 
+/**
+ * Main class for dd-slide element
+ */
 export class DdSlide extends LitElement {
   static styles = css`
     /****************************************************************
@@ -23,7 +26,7 @@ export class DdSlide extends LitElement {
      ****************************************************************/
 
     :host {
-      /* dd color pallette */
+      /** dd color pallette */
       --slide-prim-color: var(--dd-prim-color, rgba(153, 155, 132, 1));
       --slide-prim-color-dark: var(--dd-prim-color-dark, rgba(65, 90, 72, 1));
       --slide-sec-color: var(--dd-sec-color, rgba(248, 237, 227, 1));
@@ -89,6 +92,23 @@ export class DdSlide extends LitElement {
     }
   `;
 
+  /**
+   * Add grid dimensions to your slide
+   * @defaultValue `""` (empty string)
+   *
+   * @example
+   * <dd-slide dim="50 50; 50 50;">
+   *   <!-- A 2 x 2 grid, 4 slots, each slot 50% width -->
+   *   <div slot="1">
+   *      <h2>Slot 1 header</h2>
+   *    </div>
+   *    <div slot="2">
+   *      second slot content
+   *    </div>
+   *    <div slot="3">...</div>
+   *    <div slot="4">...</div>
+   * </dd-slide>
+   */
   @property({ type: String, attribute: 'dim' })
   dim = DEFAULT_ATTRIBUTES.dim;
 
@@ -111,11 +131,11 @@ export class DdSlide extends LitElement {
   slotCounter = 0;
 
   /* Make grid from dimensions */
-  makeGridDim() {
+  private _makeGridDim() {
     let gridClasses = '';
     let gridContents = '';
 
-    if (typeof this.dim !== 'string') return ``;
+    // if (typeof this.dim !== 'string') return ``;
     // find each grid row
     const dimArray = (this.dim as string)!.split(/[;]/);
     // if last row ended with ';', an empty item in the row needs to be popped
@@ -232,26 +252,28 @@ export class DdSlide extends LitElement {
           <slot>
             <h2>Put a title to remove me</h2>
           </slot>
-          ${unsafeHTML(this.makeGridDim())}
+          ${unsafeHTML(this._makeGridDim())}
           <slot name="postgrid"></slot>
         `;
       return html`
         <slot></slot>
-        ${unsafeHTML(this.makeGridDim())}
+        ${unsafeHTML(this._makeGridDim())}
         <slot name="postgrid"></slot>
       `;
     }
 
+    /*
     if (this.dim === '')
       return html`
         <h2>[WARNING] Please make sure to add proper grid dimensions.</h2>
       `;
+    */
 
     return html`
       <slot
         ><h2>
-          You did not select a grid layout. Default will be an empty page.
-          Typing content in your slide will replace this message.
+          No content added, or no grid layout defined. Default will be an empty
+          page. Typing content in your slide will replace this message.
         </h2></slot
       >
     `;

@@ -28,13 +28,24 @@ npm i @digitaldasein/dd-slide
 
 ## Usage
 
+As a module:
+
 ```html
 <script type="module">
   import 'path/to/dd-slide.js';
 </script>
 
-<dd-slide></dd-slide>
+<dd-slide>...</dd-slide>
 ```
+
+For a production ready build, either integrated into a library, or standalone, 
+check out the
+[https://gitlab.com/digital-dasein/software/html-presentations/libcompono](libcompono) 
+library.
+
+## Docs
+
+
 
 ## Local Demo with `web-dev-server`
 

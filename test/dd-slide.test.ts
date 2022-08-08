@@ -51,6 +51,7 @@ describe('DdSlide', () => {
     expect(shadow).to.not.include('replace me');
   });
 
+  /*
   it('wrong dim', async () => {
     const el = await fixture<DdSlide>(html` <dd-slide dim></dd-slide> `);
 
@@ -60,9 +61,9 @@ describe('DdSlide', () => {
 
   it('null dim check string', async () => {
     const el = await fixture<DdSlide>(html` <dd-slide></dd-slide> `);
-
     el.makeGridDim();
   });
+  */
 
   it('passes the a11y audit', async () => {
     const el = await fixture<DdSlide>(html`<dd-slide></dd-slide>`);

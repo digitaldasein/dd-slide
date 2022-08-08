@@ -1,0 +1,14 @@
+/*
+ * Custom CSS stylesheet for Lit elements *
+ */
+
+/*.tsd-signature {*/
+    /*display:none;*/
+/*}*/
+
+h3.tsd-anchor-link {
+    font-size:1.45em;
+}
+.tsd-comment h3 {
+    font-size:1.1em;
+}
