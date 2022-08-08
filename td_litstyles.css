@@ -15,8 +15,30 @@
 /*}*/
 
 h3.tsd-anchor-link {
-    font-size:1.45em;
+    font-size:1.25em;
+    background-color:rgba(153, 155, 132,0.4);
+    margin:0 0 10px 0 !important;
+    line-height:1em;
+    padding:5px 0;
 }
 .tsd-comment h3 {
-    font-size:1.1em;
+    font-size:1em;
 }
+
+.tsd-accordion-details section {
+    display:none !important;
+}
+
+.tsd-accordion-details section:nth-child(1),
+.tsd-accordion-details section:nth-child(2) {
+    display:block !important;
+}
+
+/*.tsd-panel-group.tsd-member-group {*/
+    /*display:none !important;*/
+/*}*/
+
+/*.tsd-panel-group.tsd-member-group:nth-child(1),*/
+/*.tsd-panel-group.tsd-member-group:nth-child(2) {*/
+    /*display:block !important;*/
+/*}*/

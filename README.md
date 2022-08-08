@@ -38,14 +38,15 @@ As a module:
 <dd-slide>...</dd-slide>
 ```
 
-For a production ready build, either integrated into a library, or standalone, 
+For a production-ready build, either integrated into a library or standalone, 
 check out the
-[https://gitlab.com/digital-dasein/software/html-presentations/libcompono](libcompono) 
+[libcompono](https://gitlab.com/digital-dasein/software/html-presentations/libcompono) 
 library.
 
 ## Docs
 
-
+&rarr; [go to 
+docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/docs)
 
 ## Local Demo with `web-dev-server`
 
@@ -84,6 +85,8 @@ To run the tests in interactive watch mode run:
 yarn test:watch
 ```
 
+Test results are available 
+[here](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/lcov-report/).
 
 ## Tooling configs
 
