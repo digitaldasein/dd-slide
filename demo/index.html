@@ -10,6 +10,7 @@ SPDX-License-Identifier: MIT
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
   <style>
     :root {
       --dd-prim-color-dark:rgba(65, 90, 72, 1);
@@ -19,6 +20,9 @@ SPDX-License-Identifier: MIT
     }
     dd-slide {
       border: 1px solid black;
+    }
+    ul, ol {
+      line-height:1.5em;
     }
   </style>
 </head>
@@ -110,6 +114,33 @@ SPDX-License-Identifier: MIT
           Some content that goes <i>after</i> the grid.
           <p>note that depending on your grid complexitity, a (set of) <b><code>dd-slide</code></b> element(s) could be much better suited</p>
         </div>
+      </dd-slide>
+      <br><br>
+
+      <h3>Example 6 - lists and hyperlinks</h3>
+      <dd-slide>
+        <h2>My new header</h2>
+        what about a <a href="http://test.org">http://test.org</a>
+        <ul>
+          <li>A cool list item</li>
+          <li>And another one, and this one is a very very long one, so long we can't even see it properly</li>
+          <li>This is funky
+            <ul>
+              <li>And this is a sublist item</li>
+              <li>And this one too</li>
+            </ul>
+          </li>
+        </ul>
+
+        <ol>
+          <li>What about an <a href="https://test.org">ordered list</a>?</li>
+          <li>And another one at that
+          <ol>
+            <li>Do nested ordered lists also work?</li>
+            <li>Or not?</li>
+          </ol>
+          </li>
+        </ol>
       </dd-slide>
       <br><br>
       `,

@@ -17,31 +17,35 @@ const DEFAULT_ATTRIBUTES = {
 };
 
 /**
- * Main class for **`dd-slide` component**
+ * Main class for HTML web component **`dd-slide`**
  *
  * For **styling** this component, check out {@link DdSlide.styles | the styles
  * section}.
  *
  * <u>**Important note**</u>: all lit-component properties (interpreted here as
- * `other properties`)  that are documented here also have a **corresponding
- * HTML attribute**. The _non-attribute_ properties can be consired private,
+ * `other properties`) that are documented here have a **corresponding
+ * HTML attribute**. The _non-attribute_ properties are consired private,
  * and are ingored in the documentation.
  *
  * @example
  * A simple example, with 2x2 grid (4 slots), each taking up 50% of the width,
  * with a border around each slot (cell)
  * ```html
- * <dd-slide dim="50 50; 50 50;" slot-style="border: 1px solid black;">
- *   <h2>A slide heading</h2>
- *   <div slot="1">
- *     <h4>A slot header.</h4>
- *   </div>
- *   <div slot="2">
- *       Slot 2 content
- *   </div>
- *   <div slot="3">...</div>
- *   <div slot="4">...</div>
- * </dd-slide>
+ * <html>
+ *   [...]
+ *   <dd-slide dim="50 50; 50 50;" slot-style="border: 1px solid black;">
+ *     <h2>A slide heading</h2>
+ *     <div slot="1">
+ *       <h4>A slot header.</h4>
+ *     </div>
+ *     <div slot="2">
+ *         Slot 2 content
+ *     </div>
+ *     <div slot="3">...</div>
+ *     <div slot="4">...</div>
+ *   </dd-slide>
+ *   [...]
+ * </html>
  * ```
  */
 export class DdSlide extends LitElement {
@@ -50,7 +54,7 @@ export class DdSlide extends LitElement {
    * variables** (including their default values), in combination with {@link
    * DdSlide.slotStyle} and {@link DdSlide.rowStyle}:
    *
-   * - **`--dd-heading-color`** [`var(--dd-prim-color-dark)`]: slide heading
+   * - **`--dd-color-heading`** [`var(--dd-color-prim-dark)`]: slide heading
    *                            color, falls back to `black` if not defined
    * - **`--dd-slide-ratio`** [`calc(16/9)`]: slide ratio
    * - **`--dd-slide-width`** [`1024px`]: slide width (this, together with
@@ -66,7 +70,6 @@ export class DdSlide extends LitElement {
    *
    *
    */
-
   static styles = css`
     /****************************************************************
      * Element styling
@@ -74,7 +77,9 @@ export class DdSlide extends LitElement {
 
     :host {
       /* color pallette */
-      --slide-heading-color: var(--dd-heading-color, var(--dd-prim-color-dark));
+      --slide-color-heading: var(--dd-color-heading, var(--dd-color-prim-dark));
+      --slide-color-link: var(--dd-color-link, rgba(65, 90, 72, 0.7));
+      --slide-color-link-hover: var(--dd-color-link-hover, rgba(65, 90, 72, 1));
 
       --slide-ratio: var(--dd-slide-ratio, calc(16 / 9));
       --slide-width: var(--dd-slide-width, 1024px);
@@ -106,7 +111,7 @@ export class DdSlide extends LitElement {
     ::slotted(h6),
     h6 {
       /* style headings in the template "<slot> dummy text </slot>" */
-      color: var(--slide-heading-color);
+      color: var(--slide-color-heading);
       margin: 0;
       padding: 0 0 var(--slide-pad-top-content) 0;
     }
@@ -129,6 +134,8 @@ export class DdSlide extends LitElement {
     .gridrow {
       padding-bottom: var(--slide-gridspace-row);
     }
+
+    /* https://github.com/WICG/webcomponents/issues/889 */
   `;
 
   /**
@@ -325,6 +332,10 @@ export class DdSlide extends LitElement {
       (footerElem as HTMLElement).style.display = 'none';
     }
   };
+
+  async firstUpdated() {
+    //
+  }
 
   connectedCallback() {
     super.connectedCallback();
