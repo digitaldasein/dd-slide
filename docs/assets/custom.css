@@ -33,3 +33,24 @@ h3.tsd-anchor-link {
 .tsd-accordion-details section:nth-child(2) {
     display:block !important;
 }
+
+table {
+    /*border: 1px solid black;*/
+}
+
+table td, table td * {
+    vertical-align: top;
+    min-height:1.5em;
+}
+
+
+table tr:nth-child(odd) td{
+    background-color:rgba(0,0,0,0.05)
+}
+table tr:nth-child(even) td{
+    background-color:rgba(0,0,200,0.02)
+}
+
+table code {
+    background-color:rgba(255,255,255,0.25);
+}

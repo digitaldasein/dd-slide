@@ -58,7 +58,7 @@ export class DdSlide extends LitElement {
    * |  <div style="width:200px">CSS variable</div>   | <div style="width:200px">Default</div>   | Description |
    * |:-----------------------------------------------|:-----------------------------------------|:------------|
    * |**`--dd-color-heading`**     |`var(--dd-color-prim-dark)` | slide heading color, falls back to `black` if not defined                          |
-   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide ratio                                                                        |
+   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide aspect ratio                                                                        |
    * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)    |
    * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
    * |**`--dd-slide-gridspace-row`**    |`10px`                 | vertical spacing between grid rows (defined with `dim` attr) |
