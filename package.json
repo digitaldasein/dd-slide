@@ -11,7 +11,7 @@
     "./dd-slide.js": "./dist/src/dd-slide.js"
   },
   "scripts": {
-    "analyze": "cem analyze --litelement",
+    "analyze": "cem analyze",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "build": "tsc && npm run analyze -- --exclude dist",
     "prepublish": "tsc && npm run analyze -- --exclude dist",

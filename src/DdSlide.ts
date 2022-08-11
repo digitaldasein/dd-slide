@@ -54,16 +54,16 @@ export class DdSlide extends LitElement {
    * variables** (including their default values), in combination with {@link
    * DdSlide.slotStyle} and {@link DdSlide.rowStyle}:
    *
-   * - **`--dd-color-heading`** [`var(--dd-color-prim-dark)`]: slide heading
-   *                            color, falls back to `black` if not defined
-   * - **`--dd-slide-ratio`** [`calc(16/9)`]: slide ratio
-   * - **`--dd-slide-width`** [`1024px`]: slide width (this, together with
-   *                          `--dd-slide-ratio` determines the slide height)
-   * - **`--dd-font`** [`24px/2 'Roboto', sans-serif`]: font style
-   * - **`--dd-slide-gridspace-row`** [`10px`]: set vertical space between grid
-   *                                  rows
-   * - **`--dd-slide-gridspace-col`** [`10px`]: set horizontal space between
-   *                                  grid columns
+   *
+   * |  <div style="width:200px">CSS variable</div>   | <div style="width:200px">Default</div>   | Description |
+   * |:-----------------------------------------------|:-----------------------------------------|:------------|
+   * |**`--dd-color-heading`**     |`var(--dd-color-prim-dark)` | slide heading color, falls back to `black` if not defined                          |
+   * |**`--dd-slide-ratio`**       |`calc(16/9)`                | slide ratio                                                                        |
+   * |**`--dd-slide-width`**       |`1024px`                    | slide width (this, together with`--dd-slide-ratio` determines the slide height)    |
+   * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
+   * |**`--dd-slide-gridspace-row`**    |`10px`                 | vertical spacing between grid rows (defined with `dim` attr) |
+   * |**`--dd-slide-gridspace-col`**    |`10px`                 | horizontal spacing between grid rows (defined with `dim` attr) |
+   *
    *
    * The variables can be set anywhere in your HTML context (e.g. in `:root`,
    * up until the `dd-slide` component itself).
@@ -219,7 +219,7 @@ export class DdSlide extends LitElement {
 
   /**
    * _Omit_ slide footer on _this_ slide when auto-inserted by the
-   * `dd-footer` element.
+   * `dd-footer` element (using the associated `to-selector` attr).
    *
    * **Corresponding attribute:** `no-footer`
    *
@@ -228,7 +228,7 @@ export class DdSlide extends LitElement {
   @property({ type: Boolean, attribute: 'no-footer', reflect: true })
   noFooter = DEFAULT_ATTRIBUTES.noFooter;
 
-  /** @ingore */
+  /** @ignore */
   @property({ type: Number })
   slotCounter = 0;
 
