@@ -12,8 +12,10 @@ const DEFAULT_ATTRIBUTES = {
   dim: '',
   slotStyle: '',
   rowStyle: '',
+  hostStyle: '',
   noFillers: false,
   noFooter: false,
+  center: false,
 };
 
 /**
@@ -98,18 +100,18 @@ export class DdSlide extends LitElement {
       font: var(--slide-font);
     }
 
-    ::slotted(h1),
-    h1,
-    ::slotted(h2),
-    h2,
-    ::slotted(h3),
-    h3,
-    ::slotted(h4),
-    h4,
-    ::slotted(h5),
-    h5,
-    ::slotted(h6),
-    h6 {
+    ::slotted(h1:first-child),
+    h1:first-child,
+    ::slotted(h2:first-child),
+    h2:first-child,
+    ::slotted(h3:first-child),
+    h3:first-child,
+    ::slotted(h4:first-child),
+    h4:first-child,
+    ::slotted(h5:first-child),
+    h5:first-child,
+    ::slotted(h6:first-child),
+    h6:first-child {
       /* style headings in the template "<slot> dummy text </slot>" */
       color: var(--slide-color-heading);
       margin: 0;
@@ -129,6 +131,13 @@ export class DdSlide extends LitElement {
       height: var(--slide-height);
       background-color: white;
       margin: 0;
+    }
+
+    .center {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .gridrow {
@@ -207,6 +216,21 @@ export class DdSlide extends LitElement {
   rowStyle = DEFAULT_ATTRIBUTES.rowStyle;
 
   /**
+   * CSS Style for the host element (`dd-slide`). This is necessary to propagate
+   * inline styles from the host to all the slotted grid elements (in any)
+   * For normal, non-grid slides, the style attribute should work as expected
+   *
+   * For styling a grid-based `dd-slide` element from an external CSS
+   * sheet, use the `.dd-slide` class.
+   *
+   * **Corresponding attribute:** `style`
+   *
+   * **Default value:** `""` (empty string)
+   */
+  @property({ type: String, attribute: 'style' })
+  hostStyle = DEFAULT_ATTRIBUTES.hostStyle;
+
+  /**
    * _Omit_ default fillers (as reminders), that is, for slide titles and/or slot
    * content, whenever no title or slot-content is provided.
    *
@@ -228,13 +252,22 @@ export class DdSlide extends LitElement {
   @property({ type: Boolean, attribute: 'no-footer', reflect: true })
   noFooter = DEFAULT_ATTRIBUTES.noFooter;
 
+  /**
+   * Center all slide content, both horizontal and vertical
+   *
+   * **Corresponding attribute:** `center`
+   *
+   * **Default value:** `false`
+   */
+  @property({ type: Boolean, attribute: 'center', reflect: true })
+  center = DEFAULT_ATTRIBUTES.center;
+
   /** @ignore */
   @property({ type: Number })
   slotCounter = 0;
 
   /* Make grid from dimensions */
   private _makeGridDim() {
-    let gridClasses = '';
     let gridContents = '';
 
     // if (typeof this.dim !== 'string') return ``;
@@ -289,37 +322,27 @@ export class DdSlide extends LitElement {
 
         // join together again (grid template)
         const rowColumns = rowCells.join(' ');
-        const gridClass = `
-          .grid-${i + 1}{
-            display: grid;
+
+        const gridStyle = `display: grid;
             grid-template-columns: ${rowColumns};
-            grid-gap: var(--slide-gridspace-col);
-          }
-          `;
-        // add the new grid class to the styles element
-        gridClasses += gridClass;
+            grid-gap: var(--gridspace-col);`;
 
         // adding the content fillers
         gridContents += `
-        <div class="gridrow grid-${i + 1}" style="${this.rowStyle}">
+        <div class="gridrow grid-${i + 1}" style="${gridStyle} ${
+          this.rowStyle
+        }">
           ${rowCellContent}
         </div>
         `;
       }
     }
 
-    const resultStyle = `
-      <style>
-        ${gridClasses}
-      </style>
-    `;
-
     const resultHtml = `
         ${gridContents}
     `;
 
     return `
-      ${resultStyle}
       ${resultHtml}
     `;
   }
@@ -352,19 +375,30 @@ export class DdSlide extends LitElement {
     this.classList.add('slide');
     this.title = 'Slide';
 
+    const slotClassList = ['dd-slide'];
+    if (this.center) slotClassList.push('center');
+
     if (this.dim) {
       if (!this.noFillers)
         return html`
-          <slot>
-            <h2>Put a title to remove me</h2>
-          </slot>
-          ${unsafeHTML(this._makeGridDim())}
-          <slot name="postgrid"></slot>
+          <div class="${slotClassList.join(' ')}" style="${this.hostStyle}">
+            <div>
+              <slot>
+                <h2>Put a title to remove me</h2>
+              </slot>
+              ${unsafeHTML(this._makeGridDim())}
+              <slot name="postgrid"></slot>
+            </div>
+          </div>
         `;
       return html`
-        <slot></slot>
-        ${unsafeHTML(this._makeGridDim())}
-        <slot name="postgrid"></slot>
+        <div class="${slotClassList.join(' ')}" style="${this.hostStyle}">
+          <div>
+            <slot></slot>
+            ${unsafeHTML(this._makeGridDim())}
+            <slot name="postgrid"></slot>
+          </div>
+        </div>
       `;
     }
 
@@ -376,12 +410,17 @@ export class DdSlide extends LitElement {
     */
 
     return html`
-      <slot
-        ><h2>
-          No content added, or no grid layout defined. Default will be an empty
-          page. Typing content in your slide will replace this message.
-        </h2></slot
-      >
+      <div class="${slotClassList.join(' ')}">
+        <div>
+          <slot>
+            <h2>
+              No content added, or no grid layout defined. Default will be an
+              empty page. Typing content in your slide will replace this
+              message.
+            </h2>
+          </slot>
+        </div>
+      </div>
     `;
   }
 }

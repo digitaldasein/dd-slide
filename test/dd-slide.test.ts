@@ -51,6 +51,10 @@ describe('DdSlide', () => {
     expect(shadow).to.not.include('replace me');
   });
 
+  it('center content', async () => {
+    await fixture<DdSlide>(html` <dd-slide center></dd-slide> `);
+  });
+
   /*
   it('wrong dim', async () => {
     const el = await fixture<DdSlide>(html` <dd-slide dim></dd-slide> `);

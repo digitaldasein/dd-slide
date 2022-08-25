@@ -61,8 +61,22 @@ SPDX-License-Identifier: MIT
       </dd-slide>
       <br><br>
 
-      <h3>Example 3 - 2 x 2 grid (with borders)</h3>
-      <dd-slide dim="50 50; 50 50;" slot-style="border: 1px solid black;">
+      <h3>Example 2 - center content vertically and horizontally</h3>
+      <dd-slide center>
+        <h2>my title</h2>
+        <div>my content, without a grid</div>
+        <h3>Some more sub-headers</h4>
+        <div>And some more content</div>
+        <h4>Some more sub-headers</h4>
+        <div>And some more content</div>
+      </dd-slide>
+      <br><br>
+
+
+      <h3>Example 3 - 2 x 2 grid (with borders), also centered</h3>
+      <dd-slide dim="50 50; 50 50;" 
+                center
+                slot-style="border: 1px solid black;">
         <h2>Feel entitled to change me.</h2>
         <div slot="1">
           This is my own content.
@@ -114,33 +128,6 @@ SPDX-License-Identifier: MIT
           Some content that goes <i>after</i> the grid.
           <p>note that depending on your grid complexitity, a (set of) <b><code>dd-slide</code></b> element(s) could be much better suited</p>
         </div>
-      </dd-slide>
-      <br><br>
-
-      <h3>Example 6 - lists and hyperlinks</h3>
-      <dd-slide>
-        <h2>My new header</h2>
-        what about a <a href="http://test.org">http://test.org</a>
-        <ul>
-          <li>A cool list item</li>
-          <li>And another one, and this one is a very very long one, so long we can't even see it properly</li>
-          <li>This is funky
-            <ul>
-              <li>And this is a sublist item</li>
-              <li>And this one too</li>
-            </ul>
-          </li>
-        </ul>
-
-        <ol>
-          <li>What about an <a href="https://test.org">ordered list</a>?</li>
-          <li>And another one at that
-          <ol>
-            <li>Do nested ordered lists also work?</li>
-            <li>Or not?</li>
-          </ol>
-          </li>
-        </ol>
       </dd-slide>
       <br><br>
       `,
