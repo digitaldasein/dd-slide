@@ -271,6 +271,9 @@ export class DdSlide extends LitElement {
 
   /* Make grid from dimensions */
   private _makeGridDim() {
+    // re-initialise in case of multiple renders
+    this.slotCounter = 0;
+
     let gridContents = '';
 
     // if (typeof this.dim !== 'string') return ``;

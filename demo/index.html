@@ -61,7 +61,7 @@ SPDX-License-Identifier: MIT
       </dd-slide>
       <br><br>
 
-      <h3>Example 2 - center content vertically and horizontally</h3>
+      <h3>Example 2 - center content vertically and horizontally, with blue background</h3>
       <dd-slide center
                 style="background-color:blue;">
         <h2>my title</h2>
@@ -131,6 +131,23 @@ SPDX-License-Identifier: MIT
         </div>
       </dd-slide>
       <br><br>
+
+      <h3>Example 6</h3>
+      <dd-slide dim="50 50; 50 50;">
+        <h2>Use <code>dim</code> attribute from <code>dd-slide</code> as 2x2 grid</h2>
+        <div slot="1">
+          this is slot 1
+        </div>
+        <div slot="2">
+            this is slot 2
+        </div>
+        <div slot="3">
+          this is slot 3
+        </div>
+        <div slot="4">
+          this is slot 4
+        </div>
+      </dd-slide>
       `,
 
       document.querySelector('#demo')
