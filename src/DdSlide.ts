@@ -65,7 +65,10 @@ export class DdSlide extends LitElement {
    * |**`--dd-font`**              |`24px/2 'Roboto', sans-serif`| font style |
    * |**`--dd-slide-gridspace-row`**    |`10px`                 | vertical spacing between grid rows (defined with `dim` attr) |
    * |**`--dd-slide-gridspace-col`**    |`10px`                 | horizontal spacing between grid rows (defined with `dim` attr) |
-   *
+   * |**`--dd-slide-pad-top`**          |`0px`                  | Top padding of slide, **including** title |
+   * |**`--dd-slide-pad-top-content`**  |`0px`                  | Top padding of slide content, except for title |
+   * |**`--dd-slide-pad-left`**         |`25px`                 | Left padding of slide content |
+   * |**`--dd-slide-pad-right`**        |`25px`                 | Right padding of slide content |
    *
    * The variables can be set anywhere in your HTML context (e.g. in `:root`,
    * up until the `dd-slide` component itself).
@@ -88,10 +91,10 @@ export class DdSlide extends LitElement {
       --slide-height: calc(var(--slide-width) / var(--slide-ratio));
       --slide-font: var(--dd-font, 24px/2 'Roboto', sans-serif);
 
-      --slide-pad-top: 0px;
-      --slide-pad-top-content: 0px;
-      --slide-pad-right: calc(25px + var(--slide-gridspace-col));
-      --slide-pad-left: 25px;
+      --slide-pad-top: var(--dd-slide-pad-top, 0px);
+      --slide-pad-top-content: var(--dd-slide-pad-top-content, 0px);
+      --slide-pad-right: var(--dd-slide-pad-right, 25px);
+      --slide-pad-left: var(--dd-slide-pad-left, 25px);
 
       --slide-gridspace-row: var(--dd-slide-gridspace-row, 10px);
       --slide-gridspace-col: var(--dd-slide-gridspace-col, 10px);
@@ -382,7 +385,7 @@ export class DdSlide extends LitElement {
       if (!this.noFillers)
         return html`
           <div class="${slotClassList.join(' ')}">
-            <div style="${this.hostStyle}">
+            <div>
               <slot>
                 <h2>Put a title to remove me</h2>
               </slot>
@@ -393,7 +396,7 @@ export class DdSlide extends LitElement {
         `;
       return html`
         <div class="${slotClassList.join(' ')}">
-          <div style="${this.hostStyle}">
+          <div>
             <slot></slot>
             ${unsafeHTML(this._makeGridDim())}
             <slot name="postgrid"></slot>
@@ -411,7 +414,7 @@ export class DdSlide extends LitElement {
 
     return html`
       <div class="${slotClassList.join(' ')}">
-        <div style="${this.hostStyle}">
+        <div>
           <slot>
             <h2>
               No content added, or no grid layout defined. Default will be an
