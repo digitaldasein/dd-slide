@@ -381,8 +381,8 @@ export class DdSlide extends LitElement {
     if (this.dim) {
       if (!this.noFillers)
         return html`
-          <div class="${slotClassList.join(' ')}" style="${this.hostStyle}">
-            <div>
+          <div class="${slotClassList.join(' ')}">
+            <div style="${this.hostStyle}">
               <slot>
                 <h2>Put a title to remove me</h2>
               </slot>
@@ -392,8 +392,8 @@ export class DdSlide extends LitElement {
           </div>
         `;
       return html`
-        <div class="${slotClassList.join(' ')}" style="${this.hostStyle}">
-          <div>
+        <div class="${slotClassList.join(' ')}">
+          <div style="${this.hostStyle}">
             <slot></slot>
             ${unsafeHTML(this._makeGridDim())}
             <slot name="postgrid"></slot>
@@ -411,7 +411,7 @@ export class DdSlide extends LitElement {
 
     return html`
       <div class="${slotClassList.join(' ')}">
-        <div>
+        <div style="${this.hostStyle}">
           <slot>
             <h2>
               No content added, or no grid layout defined. Default will be an
