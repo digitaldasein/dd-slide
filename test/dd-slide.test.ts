@@ -51,8 +51,13 @@ describe('DdSlide', () => {
     expect(shadow).to.not.include('replace me');
   });
 
+  // not sure how to test the cented content (check for flexbox?)
   it('center content', async () => {
     await fixture<DdSlide>(html` <dd-slide center></dd-slide> `);
+  });
+
+  it('shout content', async () => {
+    await fixture<DdSlide>(html` <dd-slide shout></dd-slide> `);
   });
 
   /*

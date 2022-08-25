@@ -16,6 +16,7 @@ const DEFAULT_ATTRIBUTES = {
   noFillers: false,
   noFooter: false,
   center: false,
+  shout: false,
 };
 
 /**
@@ -69,6 +70,7 @@ export class DdSlide extends LitElement {
    * |**`--dd-slide-pad-top-content`**  |`0px`                  | Top padding of slide content, except for title |
    * |**`--dd-slide-pad-left`**         |`25px`                 | Left padding of slide content |
    * |**`--dd-slide-pad-right`**        |`25px`                 | Right padding of slide content |
+   * |**`--dd-slide-shout-size`**       |`2.5em`                | Font-size for * shouting something (auto-centered) |
    *
    * The variables can be set anywhere in your HTML context (e.g. in `:root`,
    * up until the `dd-slide` component itself).
@@ -98,6 +100,8 @@ export class DdSlide extends LitElement {
 
       --slide-gridspace-row: var(--dd-slide-gridspace-row, 10px);
       --slide-gridspace-col: var(--dd-slide-gridspace-col, 10px);
+
+      --slide-shout-size: var(--dd-slide-shout-size, 2.5em);
 
       display: block;
       font: var(--slide-font);
@@ -141,6 +145,12 @@ export class DdSlide extends LitElement {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .shout {
+      font-size: var(--slide-shout-size);
+      line-height: 1.5em;
+      text-align: center;
     }
 
     .gridrow {
@@ -256,7 +266,7 @@ export class DdSlide extends LitElement {
   noFooter = DEFAULT_ATTRIBUTES.noFooter;
 
   /**
-   * Center all slide content, both horizontal and vertical
+   * Center all slide content, both horizontally and vertically
    *
    * **Corresponding attribute:** `center`
    *
@@ -264,6 +274,22 @@ export class DdSlide extends LitElement {
    */
   @property({ type: Boolean, attribute: 'center', reflect: true })
   center = DEFAULT_ATTRIBUTES.center;
+
+  /**
+   * Large font for shouting something (big font)
+   * This _also_ centers slide content, both horizontally and vertically, _and_
+   * sets the `text-align` attribute to `center` (in contrast to {@link
+   * DdSlide.center | the `center` attribute }
+   *
+   * The **shout font-size** defaults to 2.5em, but you can modify this by setting
+   * the `--dd-slide-shout-size` CSS variable.
+   *
+   * **Corresponding attribute:** `shout`
+   *
+   * **Default value:** `false`
+   */
+  @property({ type: Boolean, attribute: 'shout', reflect: true })
+  shout = DEFAULT_ATTRIBUTES.shout;
 
   /** @ignore */
   @property({ type: Number })
@@ -383,6 +409,10 @@ export class DdSlide extends LitElement {
 
     const slotClassList = ['dd-slide'];
     if (this.center) slotClassList.push('center');
+    if (this.shout) {
+      slotClassList.push('center');
+      slotClassList.push('shout');
+    }
 
     if (this.dim) {
       if (!this.noFillers)
