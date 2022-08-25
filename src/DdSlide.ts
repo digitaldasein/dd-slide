@@ -150,7 +150,7 @@ export class DdSlide extends LitElement {
     .shout {
       font-size: var(--slide-shout-size);
       text-align: center;
-      line-height: 1.5em;
+      line-height: 1.25em;
     }
 
     .gridrow {
