@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2022 Digital Dasein <https://digital-dasein.gitlab.io/>
+SPDX-FileCopyrightText: 2022 Digital Dasein <https://digitaldasein.org/>
 SPDX-FileCopyrightText: 2022 Gerben Peeters <gerben@digitaldasein.org>
 SPDX-FileCopyrightText: 2022 Senne Van Baelen <senne@digitaldasein.org>
 
@@ -8,12 +8,13 @@ SPDX-License-Identifier: MIT
 
 # \<dd-slide>
 
-[![pipeline](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide/badges/main/pipeline.svg?job=build&key_text=build)](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide/-/pipelines)
-[![coverage](https://gitlab.com/digital-dasein/software/html-presentations/dd-slide/badges/main/coverage.svg?job=test)](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/lcov-report/)
+[![pipeline](https://github.com/digitaldasein/dd-slide/actions/workflows/build.yml/badge.svg)](https://github.com/digitaldasein/dd-slide/actions/workflows/build.yml)
+[![tests](https://github.com/digitaldasein/dd-slide/actions/workflows/test.yml/badge.svg)](https://digitaldasein.github.io/dd-slide/coverage/lcov-report)
 [![REUSE 
-status](https://api.reuse.software/badge/gitlab.com/digital-dasein/software/html-presentations/dd-slide)](https://api.reuse.software/info/gitlab.com/digital-dasein/software/html-presentations/dd-slide)
+status](https://api.reuse.software/badge/github.com/digitaldasein/dd-slide)](https://api.reuse.software/info/github.com/digitaldasein/dd-slide)
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) 
+recommendation.
 
 ## Installation
 
@@ -40,13 +41,12 @@ As a module:
 
 For a production-ready build, either integrated into a library or standalone, 
 check out the
-[libcompono](https://gitlab.com/digital-dasein/software/html-presentations/libcompono) 
-library.
+[libcompono](https://github.com/digitaldasein/libcompono) library.
 
 ## Docs
 
 &rarr; [go to 
-docs](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/docs/classes/DdSlide.html)
+docs](https://digitaldasein.github.io/dd-slide/docs/classes/DdSlide.html)
 
 ## Local Demo with `web-dev-server`
 
@@ -86,7 +86,7 @@ yarn test:watch
 ```
 
 Test results are available 
-[here](https://digital-dasein.gitlab.io/software/html-presentations/dd-slide/lcov-report/).
+[here](https://digitaldasein.github.io/dd-slide/coverage/lcov-report).
 
 ## Tooling configs
 
