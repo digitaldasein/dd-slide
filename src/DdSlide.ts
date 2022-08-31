@@ -405,7 +405,6 @@ export class DdSlide extends LitElement {
 
   render() {
     this.classList.add('slide');
-    this.title = 'Slide';
 
     const slotClassList = ['dd-slide'];
     if (this.center) slotClassList.push('center');
